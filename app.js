@@ -4,11 +4,14 @@ const express       = require('express'),
       logger        = require('morgan'),
       cookieParser  = require('cookie-parser'),
       bodyParser    = require('body-parser'),
-      hbs           = require('express-handlebars');
+      hbs           = require('express-handlebars'),
+      mongoose      = require('mongoose');
 
 const index = require('./routes/index');
 
+
 const app = express();
+mongoose.connect('mongodb://localhost:27017/mercury');
 
 // view engine setup
 app.engine('.hbs', hbs({ defaultLayout: 'layout', extname: '.hbs' }));
