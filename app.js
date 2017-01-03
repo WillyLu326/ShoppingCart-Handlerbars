@@ -6,7 +6,10 @@ const express       = require('express'),
       bodyParser    = require('body-parser'),
       hbs           = require('express-handlebars'),
       mongoose      = require('mongoose'),
-      session       = require('express-session');
+      session       = require('express-session'),
+      flash         = require('connect-flash'),
+      passport      = require('passport'),
+      bcrypt        = require('bcrypt');
 
 const index = require('./routes/index');
 
@@ -25,6 +28,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({ secret: 'my super secret' }));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
