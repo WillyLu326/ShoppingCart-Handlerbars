@@ -5,7 +5,8 @@ const express       = require('express'),
       cookieParser  = require('cookie-parser'),
       bodyParser    = require('body-parser'),
       hbs           = require('express-handlebars'),
-      mongoose      = require('mongoose');
+      mongoose      = require('mongoose'),
+      session       = require('express-session');
 
 const index = require('./routes/index');
 
@@ -23,6 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(session({ secret: 'my super secret' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
