@@ -4,7 +4,7 @@
     <div class="col-sm-12">
         {{#if hasError}}
             {{#each messages}}
-                <p class="alert alert-danger">{{ this }}</p>
+                <p class="alert alert-danger errorBlock">{{ this }}</p>
             {{/each}}
         {{/if}}
         <form action="/signup" method="post">
@@ -25,3 +25,4 @@
         </form>
     </div>
 </div>
+
