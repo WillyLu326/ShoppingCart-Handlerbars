@@ -16,6 +16,7 @@ const index = require('./routes/index');
 
 const app = express();
 mongoose.connect('mongodb://localhost:27017/mercury');
+require('./config/passport');
 
 // view engine setup
 app.engine('.hbs', hbs({ defaultLayout: 'layout', extname: '.hbs' }));
@@ -27,7 +28,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(session({ secret: 'my super secret' }));
+app.use(session({ secret: 'my super secret', resave: true, saveUninitialized: true }));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());

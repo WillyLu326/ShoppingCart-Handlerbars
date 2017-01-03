@@ -2,6 +2,11 @@
 <hr>
 <div class="row">
     <div class="col-sm-12">
+        {{#if hasError}}
+            {{#each messages}}
+                <p class="alert alert-danger">{{ this }}</p>
+            {{/each}}
+        {{/if}}
         <form action="/signup" method="post">
             <div class="form-group">
                 <label for="email">E-Mail</label>
